@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.Tooltip?>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+    <top>
+        <!--toolbar for controls-->
+        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <Button mnemonicParsing="false" onAction="#handleExportButton" text="%buttonExport" />
+                <Button mnemonicParsing="false" onAction="#handleSaveButton" text="%buttonSave" />
+                <Button mnemonicParsing="false" onAction="#handleOpenButton" text="%buttonOpen" />
+                <Button mnemonicParsing="false" onAction="#handleRunButton" text="%buttonRun" />
+                <Button mnemonicParsing="false" onAction="#handlePreviousButton" text="%buttonPrevious" />
+                <Button mnemonicParsing="false" onAction="#handleStopButton" text="%buttonStop" />
+                <Button mnemonicParsing="false" onAction="#handleNextButton" text="%buttonNext" />
+            </items>
+        </ToolBar>
+    </top>
+    <center>
+        <!--vertical SplitPane-->
+        <SplitPane dividerPositions="0.8" orientation="VERTICAL" BorderPane.alignment="CENTER">
+            <items>
+                <!--top part of vertical SplitPane-->
+                <!--horizontal SplitPane-->
+                <SplitPane dividerPositions="0.35" orientation="HORIZONTAL">
+                    <items>
+                        <!--Variables-Values Table-->
+                        <AnchorPane prefHeight="360.0" prefWidth="140.0">
+                            <children>
+                                <TreeTableView fx:id="treeTableVariables" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columnResizePolicy>
+                                        <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TreeTableView>
+                            </children>
+                        </AnchorPane>
+                        <!--code tree-->
+                        <ScrollPane fitToHeight="true" fitToWidth="true">
+                            <content>
+                                <AnchorPane id="Content">
+                                    <children>
+                                        <TreeView fx:id="treeViewCode" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </ScrollPane>
+                    </items>
+                </SplitPane>
+                <!--bottom part of vertical SplitPane-->
+                <GridPane hgap="5.0" minHeight="50.0" prefHeight="100.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="250.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="500.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="%interpreterLabel" GridPane.columnIndex="0" />
+                        <Label text="%standardOutputLabel" GridPane.columnIndex="1" />
+                        <Label fx:id="labelInterpreter" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Calibri" size="12.0" />
+                            </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                        </Label>
+                        <ScrollPane fx:id="scrollOutput" fitToHeight="true" fitToWidth="true" vbarPolicy="ALWAYS" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                            <content>
+                                <AnchorPane fx:id="paneOutput">
+                                    <children>
+                                        <Label fx:id="labelStdOutput" alignment="TOP_LEFT" ellipsisString="" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </GridPane>
+            </items>
+        </SplitPane>
+    </center>
+    <right>
+        <VBox spacing="5.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="buttonAssign" mnemonicParsing="false" onAction="#handleButtonAssign" onDragDetected="#onDragDetected" text="%buttonAssign"><tooltip><Tooltip text="%main.interpreter.Operations$AssignValueOperation"/></tooltip></Button>
+                <Button fx:id="buttonCin" mnemonicParsing="false" onAction="#handleButtonCin" onDragDetected="#onDragDetected" text="%buttonCin"><tooltip><Tooltip text="%main.interpreter.Operations$CinOperation"/></tooltip></Button>
+                <Button fx:id="buttonComment" mnemonicParsing="false" onAction="#handleButtonComment" onDragDetected="#onDragDetected" text="%buttonComment"><tooltip><Tooltip text="%main.interpreter.Operations$CommentOperation"/></tooltip></Button>
+                <Button fx:id="buttonCout" mnemonicParsing="false" onAction="#handleButtonCout" onDragDetected="#onDragDetected" text="%buttonCout"><tooltip><Tooltip text="%main.interpreter.Operations$CoutOperation"/></tooltip></Button>
+                <Button fx:id="buttonDefine" mnemonicParsing="false" onAction="#handleButtonDefine" onDragDetected="#onDragDetected" text="%buttonDefine"><tooltip><Tooltip text="%main.interpreter.Operations$DefineVariableOperation"/></tooltip></Button>
+                <Button fx:id="buttonIf" mnemonicParsing="false" onAction="#handleButtonIf" onDragDetected="#onDragDetected" text="%buttonIf"><tooltip><Tooltip text="%main.interpreter.Operations$IfOperation"/></tooltip></Button>
+                <Button fx:id="buttonWhile" mnemonicParsing="false" onAction="#handleButtonWhile" onDragDetected="#onDragDetected" text="%buttonWhile"><tooltip><Tooltip text="%main.interpreter.Operations$WhileOperation"/></tooltip></Button>
+            </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+        </VBox>
+    </right>
+</BorderPane>

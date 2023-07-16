@@ -1,0 +1,49 @@
+#Interpreter messages
+
+coutMessage = "Wyświetlam wiadomość na standardowym wyjściu."
+assignMessage = Przypisuję do zmiennej \"{0}\" wartość \"{1}\".
+assignExpressionMessage = Przypisuję do zmiennej \"{0}\" wartość \"{1}\" ({2}).
+assignToArrayMessage = Przypisuję do elementu \"{0}[{1}]\" wartość \"{2}\".
+cinWaitingForInputMessage = Oczekuję na podanie wartości...
+cinMessage = Przypisuję do zmiennej \"{0}\" wartość \"{1}\".
+defineMessage = Tworzę zmienną typu \"{0}\" o nazwie \"{1}\".
+defineArrayMessage = Tworzę zmienną typu \"{0}[]\" o nazwie \"{1}\".
+ifMessage = Sprawdzam warunek \"{0}\"... {1}
+whileMessage = Sprawdzam warunek pętli \"{0}\"... {1}
+
+#Main UI
+#Menu bar
+buttonExport = Zapisz jako C++
+buttonSave = Zapisz
+buttonOpen = Wczytaj
+buttonRun = Wykonaj do końca
+buttonPrevious = Poprzedni
+buttonStop = Stop
+buttonNext = następny
+
+#Variables table
+variableNameColumn = Nazwa
+variableValueColumn = Wartość
+
+#Operations buttons
+buttonAssign = Przypisz wartość do zmiennej
+buttonCin = Wczytaj wartość do zmiennej
+buttonComment = Komentarz
+buttonCout = Wypisz wartość
+buttonDefine = Zdefiniuj zmienną
+buttonIf = Instrukcja wyboru
+buttonWhile = Pętla dopóki
+interpreterLabel = Komunikaty interpretera
+standardOutputLabel = Wyjście programu
+
+#Tooltips for operations
+main.interpreter.Operations$AssignValueOperation = Wybierz do jakiej zmiennej, jaką wartość należy przypisać
+main.interpreter.Operations$CinOperation = Podczas wykonywania programu wyświetli prośbę o podanie wartości
+main.interpreter.Operations$CommentOperation = Komentarz, nie zmienia nic w programie
+main.interpreter.Operations$CoutOperation = Wypisze wszystko na standardowe wyjście programu
+main.interpreter.Operations$DefineVariableOperation = Tworzy nową zmienną
+main.interpreter.Operations$IfOperation = Instrukcja wyboru. Zależnie od warunku wykona jeden albo drugi zestaw instrukcji
+main.interpreter.Operations$WhileOperation = Będzie wykonywać instrukcje dopóki warunek będzie prawdziwy
+
+#Dialogs UI
+cinInputDialogMessage = Podaj wartość, a przypiszę ją do zmiennej \"{0}\"
